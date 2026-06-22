@@ -1,0 +1,74 @@
+[
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 01", "en": "Player 01", "ar": "لاعب 01" },
+    "tag": "TBRK Core",
+    "role": { "fr": "Capitaine", "en": "Captain", "ar": "القائد" },
+    "squad": "Team Breakers",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-01.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 02", "en": "Player 02", "ar": "لاعب 02" },
+    "tag": { "fr": "Stratège", "en": "Strategist", "ar": "استراتيجي" },
+    "role": { "fr": "Organizer", "en": "Organizer", "ar": "منظم" },
+    "squad": "Team Breakers",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-02.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 03", "en": "Player 03", "ar": "لاعب 03" },
+    "tag": { "fr": "Coach", "en": "Coach", "ar": "مدرب" },
+    "role": { "fr": "Admin", "en": "Admin", "ar": "مشرف" },
+    "squad": "Team Breakers",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-03.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 04", "en": "Player 04", "ar": "لاعب 04" },
+    "tag": "Slayer",
+    "role": { "fr": "Assaut", "en": "Assault", "ar": "هجوم" },
+    "squad": "Alpha",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-04.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 05", "en": "Player 05", "ar": "لاعب 05" },
+    "tag": "Entry",
+    "role": { "fr": "Objectif", "en": "Objective", "ar": "الأهداف" },
+    "squad": "Alpha",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-05.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 06", "en": "Player 06", "ar": "لاعب 06" },
+    "tag": "Support",
+    "role": { "fr": "Support", "en": "Support", "ar": "دعم" },
+    "squad": "Bravo",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-06.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 07", "en": "Player 07", "ar": "لاعب 07" },
+    "tag": "Flex",
+    "role": { "fr": "Flex", "en": "Flex", "ar": "مرن" },
+    "squad": "Bravo",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-07.jpg"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": { "fr": "Joueur 08", "en": "Player 08", "ar": "لاعب 08" },
+    "tag": "AR",
+    "role": { "fr": "Long range", "en": "Long range", "ar": "مدى بعيد" },
+    "squad": "Charlie",
+    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "image": "assets/images/player-08.jpg"
+  }
+]

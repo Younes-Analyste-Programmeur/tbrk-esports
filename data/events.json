@@ -1,0 +1,91 @@
+[
+  {
+    "id": "cod-tournament-100",
+    "active": true,
+    "title": {
+      "fr": "TBRK Call of Duty Tournament",
+      "en": "TBRK Call of Duty Tournament",
+      "ar": "بطولة TBRK Call of Duty"
+    },
+    "name": {
+      "fr": "TBRK Esports Call of Duty Tournament",
+      "en": "TBRK Esports Call of Duty Tournament",
+      "ar": "بطولة TBRK Esports للعبة Call of Duty"
+    },
+    "description": {
+      "fr": "Prépare ton squad pour un tournoi Call of Duty TBRK Esports en matchs privés. Respect, fair play et tolérance zéro pour la triche.",
+      "en": "Get your squad ready for a TBRK Esports Call of Duty private-match tournament. Respect, fair play and zero tolerance for cheating.",
+      "ar": "جهّز فريقك لبطولة Call of Duty من TBRK Esports بنظام المباريات الخاصة. احترام، لعب نظيف، وعدم التسامح نهائياً مع الغش."
+    },
+    "dateLabel": {
+      "fr": "Samedi 20/06/2026",
+      "en": "Saturday 20/06/2026",
+      "ar": "السبت 20/06/2026"
+    },
+    "timeLabel": {
+      "fr": "Heure à confirmer",
+      "en": "Time to be confirmed",
+      "ar": "سيتم تأكيد الوقت"
+    },
+    "mode": {
+      "fr": "Matchs privés COD",
+      "en": "COD private matches",
+      "ar": "مباريات COD خاصة"
+    },
+    "cashPrize": "$100",
+    "statusLabel": {
+      "fr": "Inscriptions à venir",
+      "en": "Registration coming soon",
+      "ar": "التسجيل قريباً"
+    },
+    "registrationStatus": {
+      "fr": "À venir",
+      "en": "Coming soon",
+      "ar": "قريباً"
+    },
+    "formUrl": "",
+    "sheetCsvUrl": "",
+    "rules": [
+      {
+        "fr": "Respect de tous les joueurs, admins et membres du staff.",
+        "en": "Respect all players, admins and staff members.",
+        "ar": "احترام جميع اللاعبين والمشرفين وأعضاء الطاقم."
+      },
+      {
+        "fr": "Fair play et bon esprit sportif obligatoires.",
+        "en": "Fair play and good sportsmanship are required.",
+        "ar": "الالتزام باللعب النظيف والروح الرياضية."
+      },
+      {
+        "fr": "Comportement professionnel en tout temps.",
+        "en": "Professional behavior at all times.",
+        "ar": "التصرف باحترافية في جميع الأوقات."
+      },
+      {
+        "fr": "Aucune insulte, toxicité ou langage offensant.",
+        "en": "No insults, toxicity or offensive language.",
+        "ar": "ممنوع الإهانات أو السلوك السام أو اللغة المسيئة."
+      },
+      {
+        "fr": "Aucune triche, hack, exploit ou logiciel tiers non autorisé.",
+        "en": "No cheating, hacks, exploits or unauthorized third-party software.",
+        "ar": "ممنوع الغش أو الهاكات أو استغلال الثغرات أو استخدام برامج غير مصرّح بها."
+      },
+      {
+        "fr": "Triche = bannissement permanent des événements TBRK.",
+        "en": "Cheating = permanent ban from TBRK events.",
+        "ar": "الغش = حظر دائم من فعاليات TBRK."
+      },
+      {
+        "fr": "Tous les matchs sont surveillés et révisés.",
+        "en": "All matches are monitored and reviewed.",
+        "ar": "تتم مراقبة جميع المباريات ومراجعتها."
+      }
+    ],
+    "fairPlayPolicy": {
+      "fr": "Tout joueur pris à tricher, exploiter un bug, utiliser un hack ou un logiciel non autorisé recevra un bannissement permanent de tous les événements TBRK Esports.",
+      "en": "Any player caught cheating, exploiting bugs, using hacks or unauthorized software will receive a permanent ban from all TBRK Esports events.",
+      "ar": "أي لاعب يتم ضبطه وهو يغش أو يستغل الثغرات أو يستخدم هاكات أو برامج غير مصرح بها سيحصل على حظر دائم من جميع فعاليات TBRK Esports."
+    }
+  }
+]
