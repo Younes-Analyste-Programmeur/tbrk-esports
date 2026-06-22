@@ -264,8 +264,8 @@ code {
 }
 
 .eyebrow span {
-  width: 34px;
-  height: 2px;
+  width: 277px;
+  height: 5px;
   border-radius: 99px;
   background: linear-gradient(90deg, transparent, var(--gold));
 }
