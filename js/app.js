@@ -1,7 +1,7 @@
 const languageConfig = {
   fr: { short: "FR", label: "Français", dir: "ltr" },
   en: { short: "EN", label: "English", dir: "ltr" },
-  ar: { short: "AR", label: "العربية", dir: "rtl" }
+  // ar: { short: "AR ", label: "العربية", dir: "rtl" }
 };
 
 const defaultLanguage = "fr";
@@ -925,7 +925,7 @@ function setLanguage(language) {
 
   applyTranslations();
   renderEvent(currentEvent);
-  renderTeam(currentPlayers.length ? currentPlayers : fallbackPlayers);
+  renderTeam(currentPlayers);
   renderParticipants(currentPlayers);
   setSocialLinks(currentSocials);
   initReveal();
@@ -978,7 +978,7 @@ async function init() {
   currentSocials = await fetchJson("data/socials.json", fallbackSocials);
   setSocialLinks(currentSocials);
 
-  renderTeam(currentPlayers.length ? currentPlayers : fallbackPlayers);
+  renderTeam(currentPlayers);
   renderParticipants(currentPlayers);
   initReveal();
 }
