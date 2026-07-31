@@ -1,74 +1,65 @@
 [
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "ACE", "en": "ACE", "ar": "ACE" },
+    "name": "ACE ",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-01.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "YAMITCH", "en": "YAMITCH", "ar": "YAMITCH" },
+    "name": "YAMITCH",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-02.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "SHOWGUN", "en": "SHOWGUN", "ar": "SHOWGUN" },
+    "name": "Joueur 04",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
-    "image": "assets/images/player-03.jpg"
-  },
-  {
-    "eventId": "cod-tournament-100",
-    "name": { "fr": "WISHYWASHY", "en": "WISHYWASHY", "ar": "WISHYWASHY" },
-   "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-04.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "GAMIX", "en": "GAMIX", "ar": "GAMIX" },
-   "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "name": "GAMIX",
+    "tag": "TBRK Core",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-05.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "DADDY", "en": "DADDY", "ar": "DADDY" },
+    "name": "Joueur 06",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-06.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "SOUNDWAVE", "en": "SOUNDWAVE", "ar": "SOUNDWAVE" },
+    "name": "Joueur 07",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-07.jpg"
   },
   {
     "eventId": "cod-tournament-100",
-    "name": { "fr": "X9AM9AM", "en": "X9AM9AM", "ar": "X9AM9AM" },
+    "name": "Joueur 08",
     "tag": "TBRK Core",
-    "role": { "fr": "Organisateur", "en": "Organizer", "ar": "منظم" },
-    "squad": "Team Breakers",
-    "status": { "fr": "Confirmé", "en": "Confirmed", "ar": "مؤكد" },
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
     "image": "assets/images/player-08.jpg"
   }
 ]
