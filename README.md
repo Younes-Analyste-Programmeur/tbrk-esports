@@ -16,13 +16,79 @@ Le visiteur peut changer la langue avec les boutons `FR`, `EN`, `AR` dans le men
 
 ```text
 index.html
+admin.html
 css/style.css
+css/admin.css
 js/app.js
+js/admin.js
+server.js
 data/events.json
 data/participants.json
 data/socials.json
 assets/images/
 ```
+
+## Admin GitHub
+
+L'admin peut modifier le site publie sur GitHub Pages en faisant des commits dans le depot GitHub.
+
+Ouvre :
+
+```text
+https://ton-site.github.io/ton-repo/admin.html
+```
+
+Login de depart :
+
+```text
+Username: admin
+Password: TBRK2026!
+```
+
+Ensuite, remplis les champs GitHub :
+
+```text
+Owner: ton utilisateur ou organisation GitHub
+Repository: le nom du depot
+Branch: main
+GitHub token: un fine-grained personal access token
+```
+
+Le token GitHub doit avoir acces au bon depot avec la permission :
+
+```text
+Contents: Read and write
+```
+
+L'admin met a jour ces fichiers par l'API GitHub :
+
+```text
+data/socials.json
+data/events.json
+data/participants.json
+assets/images/players/
+```
+
+GitHub Pages peut prendre environ une minute avant d'afficher les changements.
+
+Important : sur GitHub Pages, le mot de passe `admin` est seulement une barriere visuelle cote navigateur. La vraie protection vient du token GitHub. Ne partage pas ce token et supprime-le/regénere-le dans GitHub si tu penses qu'il a ete expose.
+
+## Ouvrir le site en local
+
+Pour tester en local, n'ouvre pas `admin.html` avec `file:///`.
+Lance plutot le petit serveur local :
+
+```bash
+node server.js
+```
+
+Puis ouvre :
+
+```text
+http://127.0.0.1:8000/admin.html
+```
+
+En local, l'admin peut charger les donnees du dossier, mais les sauvegardes GitHub ont besoin du token comme sur le site publie.
 
 ## Modifier les liens sociaux
 

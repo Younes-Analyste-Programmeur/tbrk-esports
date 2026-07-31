@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TBRK Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <section class="admin-login" data-login-panel>
+      <div>
+        <p class="eyebrow"><span></span> TBRK Admin</p>
+        <h1>Admin Access</h1>
+        <p class="admin-muted">Manage social links, the registration form link, and player cards by committing changes to GitHub. </p>
+      </div>
+
+      <form class="admin-card admin-form" action="#" data-login-form>
+        <label>
+          Username
+          <input name="username" autocomplete="username" required />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="btn btn-primary" type="button" data-login-submit>Log in</button>
+        <p class="admin-error" data-login-error hidden>Incorrect login. An alert email draft will be opened.</p>
+      </form>
+    </section>
+
+    <section class="admin-panel" data-admin-panel hidden>
+      <header class="admin-topbar">
+        <div>
+          <p class="eyebrow"><span></span> TBRK Admin</p>
+          <h1>Content Manager</h1>
+        </div>
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="index.html">View Site</a>
+          <button class="btn btn-ghost" type="button" data-logout>Log out</button>
+        </div>
+      </header>
+
+      <form class="admin-grid" action="#" data-admin-form>
+        <section class="admin-card">
+          <h2>GitHub Repository</h2>
+          <label>Owner <input name="githubOwner" placeholder="github-user-or-org" required /></label>
+          <label>Repository <input name="githubRepo" placeholder="repository-name" required /></label>
+          <label>Branch <input name="githubBranch" value="main" required /></label>
+          <label>GitHub token <input name="githubToken" type="password" autocomplete="off" placeholder="fine-grained token with Contents read/write" required /></label>
+          <p class="admin-muted">The token stays in this browser session and is used only to commit the content files.</p>
+        </section>
+
+        <section class="admin-card">
+          <h2>Social Media</h2>
+          <label>Discord <input name="discord" type="url" placeholder="https://discord.gg/..." /></label>
+          <label>YouTube <input name="youtube" type="url" placeholder="https://youtube.com/@..." /></label>
+          <label>TikTok <input name="tiktok" type="url" placeholder="https://tiktok.com/@..." /></label>
+          <label>Facebook <input name="facebook" type="url" placeholder="https://facebook.com/..." /></label>
+          <label>Instagram <input name="instagram" type="url" placeholder="https://instagram.com/..." /></label>
+        </section>
+
+        <section class="admin-card">
+          <h2>Registration Form</h2>
+          <label>Subscription form link <input name="formUrl" type="url" placeholder="https://forms.gle/..." /></label>
+          <p class="admin-muted">Leave it empty to show the current "form coming soon" state.</p>
+        </section>
+
+        <section class="admin-card admin-card-wide">
+          <div class="admin-section-head">
+            <h2>Players</h2>
+            <button class="btn btn-secondary" type="button" data-add-player>Add Player</button>
+          </div>
+          <div class="players-editor" data-players-editor></div>
+        </section>
+
+        <section class="admin-card admin-card-wide">
+          <h2>Save</h2>
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="button" data-save>Save Changes</button>
+            <button class="btn btn-secondary" type="button" data-load-github>Reload From GitHub</button>
+            <button class="btn btn-secondary" type="button" data-download>Download JSON Backup</button>
+          </div>
+          <p class="admin-success" data-save-message hidden></p>
+          <p class="admin-error" data-error-message hidden></p>
+        </section>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/admin.js" defer></script>
+</body>
+</html>
