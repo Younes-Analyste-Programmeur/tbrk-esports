@@ -21,16 +21,6 @@
   },
   {
     "eventId": "cod-tournament-100",
-    "name": "Joueur 04",
-    "tag": "Organizer",
-    "role": "Organizer",
-    "squad": "TBRK",
-    "status": "Confirmé",
-    "image": "assets/images/player-04.jpg",
-    "description": "Organizer"
-  },
-  {
-    "eventId": "cod-tournament-100",
     "name": "GAMIX",
     "tag": "Organizer",
     "role": "Organizer",
@@ -41,7 +31,7 @@
   },
   {
     "eventId": "cod-tournament-100",
-    "name": "Joueur 06",
+    "name": "DADDY",
     "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
@@ -51,7 +41,7 @@
   },
   {
     "eventId": "cod-tournament-100",
-    "name": "Joueur 07",
+    "name": "SOUNDWAVE",
     "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
@@ -61,12 +51,22 @@
   },
   {
     "eventId": "cod-tournament-100",
-    "name": "Joueur 08",
+    "name": "X9AMAM",
     "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
     "image": "assets/images/player-08.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "WISHYWASHY667",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "Confirmé",
+    "image": "assets/images/players/wishywashy667-1785551874322-6.jpeg",
     "description": "Organizer"
   }
 ]
