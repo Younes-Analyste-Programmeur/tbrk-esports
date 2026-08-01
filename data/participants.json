@@ -2,64 +2,71 @@
   {
     "eventId": "cod-tournament-100",
     "name": "ACE ",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-01.jpg"
+    "image": "assets/images/player-01.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "YAMITCH",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-02.jpg"
+    "image": "assets/images/player-02.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "Joueur 04",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-04.jpg"
+    "image": "assets/images/player-04.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "GAMIX",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-05.jpg"
+    "image": "assets/images/player-05.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "Joueur 06",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-06.jpg"
+    "image": "assets/images/player-06.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "Joueur 07",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-07.jpg"
+    "image": "assets/images/player-07.jpg",
+    "description": "Organizer"
   },
   {
     "eventId": "cod-tournament-100",
     "name": "Joueur 08",
-    "tag": "TBRK Core",
+    "tag": "Organizer",
     "role": "Organizer",
     "squad": "TBRK",
     "status": "Confirmé",
-    "image": "assets/images/player-08.jpg"
+    "image": "assets/images/player-08.jpg",
+    "description": "Organizer"
   }
 ]
