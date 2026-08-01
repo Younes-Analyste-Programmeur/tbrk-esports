@@ -1,5 +1,4 @@
 [
-
   {
     "id": "cod-tournament-100",
     "active": true,
@@ -44,7 +43,7 @@
       "en": "Coming soon",
       "ar": "قريباً"
     },
-    "formUrl": "",
+    "formUrl": "google.com",
     "sheetCsvUrl": "",
     "rules": [
       {
