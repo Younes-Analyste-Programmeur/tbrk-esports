@@ -426,6 +426,7 @@ let currentParticipants = [];
 let currentSocials = fallbackSocials;
 let revealObserver = null;
 let countdownTimer = null;
+const defaultEventStartsAt = "2026-08-08T23:00:00+01:00";
 
 function validLanguage(lang) {
   return Object.prototype.hasOwnProperty.call(languageConfig, lang) ? lang : defaultLanguage;
@@ -770,9 +771,16 @@ function getLocalizedEvent(event) {
   };
 }
 
+function getEventStartsAt(event) {
+  if (event?.startsAt) return event.startsAt;
+  const dateText = `${localize(event?.dateLabel)} ${localize(event?.timeLabel)}`;
+  if (/08\/08\/2026|8\/8\/2026|2026-08-08/i.test(dateText)) return defaultEventStartsAt;
+  return defaultEventStartsAt;
+}
+
 function countdownText(startsAt) {
-  if (!startsAt) return "";
-  const target = new Date(startsAt);
+  const startValue = startsAt || defaultEventStartsAt;
+  const target = new Date(startValue);
   if (Number.isNaN(target.getTime())) return "";
 
   const diff = target.getTime() - Date.now();
@@ -789,15 +797,13 @@ function countdownText(startsAt) {
 }
 
 function updateCountdown(event) {
-  const text = countdownText(event?.startsAt);
-  if (!text) return;
-  setText("[data-event-status]", text);
+  const text = countdownText(getEventStartsAt(event));
+  if (text) setAllText("[data-event-status]", text);
 }
 
 function startCountdown(event) {
   if (countdownTimer) clearInterval(countdownTimer);
   updateCountdown(event);
-  if (!event?.startsAt) return;
   countdownTimer = setInterval(() => updateCountdown(event), 60000);
 }
 
@@ -872,10 +878,13 @@ function combineParticipants() {
 function renderTeam(players) {
   const grid = $("[data-team-grid]");
   if (!grid) return;
-  grid.innerHTML = "";
-  setText("[data-member-count]", players.length);
+  const visiblePlayers = players.slice(0, 8).map(localizePlayer);
 
-  players.slice(0, 8).map(localizePlayer).forEach((player) => {
+  grid.innerHTML = "";
+  setAllText("[data-member-count]", visiblePlayers.length);
+  setAllText("[data-member-count-label]", t("team.membersCount"));
+
+  visiblePlayers.forEach((player) => {
     const card = document.createElement("article");
     card.className = "player-card reveal";
 
