@@ -390,6 +390,8 @@ const fallbackPlayers = [
   { eventId: "cod-tournament-100", name: { fr: "Joueur 08", en: "Player 08", ar: "لاعب 08" }, tag: "AR", role: { fr: "Long range", en: "Long range", ar: "مدى بعيد" }, squad: "Charlie", status: { fr: "Confirmé", en: "Confirmed", ar: "مؤكد" }, image: "assets/images/player-08.jpg" }
 ];
 
+const fallbackMembers = fallbackPlayers.slice(0, 7);
+
 const fallbackSocials = {
   discord: "https://discord.gg/tbrk-demo",
   youtube: "https://www.youtube.com/@tbrk-demo",
@@ -403,7 +405,8 @@ const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selec
 
 let currentLanguage = defaultLanguage;
 let currentEvent = null;
-let currentPlayers = [];
+let currentMembers = [];
+let currentParticipants = [];
 let currentSocials = fallbackSocials;
 let revealObserver = null;
 
@@ -751,6 +754,7 @@ function renderEvent(event) {
   setText("[data-event-date-full]", localizedEvent.dateLabel);
   setText("[data-event-time]", localizedEvent.timeLabel);
   setText("[data-event-mode]", localizedEvent.mode);
+  setAllText("[data-event-format]", localizedEvent.mode);
   setText("[data-event-state]", localizedEvent.statusLabel);
   setText("[data-event-status]", localizedEvent.registrationStatus || localizedEvent.statusLabel);
   setText("[data-event-prize]", localizedEvent.cashPrize);
@@ -790,6 +794,20 @@ function localizePlayer(player, index = 0) {
     status: localize(player.status) || t("participant.confirmed"),
     image: player.image || ""
   };
+}
+
+function playerKey(player) {
+  return `${localize(player.name).trim().toLowerCase()}|${localize(player.squad).trim().toLowerCase()}`;
+}
+
+function combineParticipants() {
+  const seen = new Set();
+  return [...currentMembers, ...currentParticipants].filter((player) => {
+    const key = playerKey(player);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function renderTeam(players) {
@@ -925,8 +943,8 @@ function setLanguage(language) {
 
   applyTranslations();
   renderEvent(currentEvent);
-  renderTeam(currentPlayers);
-  renderParticipants(currentPlayers);
+  renderTeam(currentMembers);
+  renderParticipants(combineParticipants());
   setSocialLinks(currentSocials);
   initReveal();
 }
@@ -969,17 +987,20 @@ async function init() {
   currentEvent = events.find((event) => event.active) || events[0] || fallbackEvents[0];
   renderEvent(currentEvent);
 
+  const localMembers = await fetchJson("data/members.json", fallbackMembers);
   const localPlayers = await fetchJson("data/participants.json", fallbackPlayers);
   const csvText = await fetchCsv(currentEvent.sheetCsvUrl);
   const playersFromCsv = csvText ? parseCsv(csvText) : null;
-  currentPlayers = (playersFromCsv && playersFromCsv.length ? playersFromCsv : localPlayers)
+  currentMembers = localMembers
+    .filter((player) => !player.eventId || player.eventId === currentEvent.id);
+  currentParticipants = (playersFromCsv && playersFromCsv.length ? playersFromCsv : localPlayers)
     .filter((player) => !player.eventId || player.eventId === currentEvent.id);
 
   currentSocials = await fetchJson("data/socials.json", fallbackSocials);
   setSocialLinks(currentSocials);
 
-  renderTeam(currentPlayers);
-  renderParticipants(currentPlayers);
+  renderTeam(currentMembers);
+  renderParticipants(combineParticipants());
   initReveal();
 }
 

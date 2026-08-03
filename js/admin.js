@@ -23,12 +23,18 @@ const fallbackPlayers = [
   { eventId, name: "SHOWGUN", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirme", image: "assets/images/player-03.jpg", description: "Organizer" }
 ];
 
+const fallbackMembers = fallbackPlayers;
+
 const $ = (selector, root = document) => root.querySelector(selector);
 
 let socials = { ...fallbackSocials };
 let formUrl = "";
+let eventDate = "";
+let eventTime = "";
+let eventMode = "";
 let eventsData = [];
-let players = [];
+let members = [];
+let participants = [];
 
 function textToBase64(text) {
   const bytes = new TextEncoder().encode(text);
@@ -136,6 +142,15 @@ async function getGithubFile(filePath) {
   return githubRequest(`/contents/${encodeURIComponentPath(filePath)}?ref=${encodeURIComponent(branch)}`);
 }
 
+async function getOptionalGithubFile(filePath) {
+  try {
+    return await getGithubFile(filePath);
+  } catch (error) {
+    if (/not found/i.test(error.message || "")) return null;
+    throw error;
+  }
+}
+
 async function putGithubFile(filePath, contentBase64, message, sha) {
   const { branch } = getGithubSettings();
   return githubRequest(`/contents/${encodeURIComponentPath(filePath)}`, {
@@ -199,7 +214,39 @@ function slugify(value) {
     .slice(0, 48) || "player";
 }
 
-function playerTemplate(player, index) {
+function getLocalizedValue(value) {
+  if (value === undefined || value === null) return "";
+  if (typeof value === "string" || typeof value === "number") return String(value);
+  if (typeof value === "object") return value.fr || value.en || Object.values(value).find((item) => typeof item === "string") || "";
+  return String(value);
+}
+
+function setLocalizedValue(existingValue, nextValue) {
+  const trimmed = String(nextValue || "").trim();
+  if (existingValue && typeof existingValue === "object" && !Array.isArray(existingValue)) {
+    return {
+      ...existingValue,
+      fr: trimmed,
+      en: trimmed
+    };
+  }
+  return trimmed;
+}
+
+function getActiveEvent(events = eventsData) {
+  if (!Array.isArray(events) || !events.length) return { id: eventId, active: true };
+  return events.find((event) => event.active) || events[0];
+}
+
+function normalizeRoster(list, defaults = []) {
+  const source = Array.isArray(list) ? list : defaults;
+  return source.map((player) => ({
+    ...player,
+    description: player.description || player.role || player.tag || ""
+  }));
+}
+
+function playerTemplate(player, index, collection, renderCallback) {
   const row = document.createElement("article");
   row.className = "player-editor";
   row.dataset.playerIndex = String(index);
@@ -212,12 +259,12 @@ function playerTemplate(player, index) {
   const fields = document.createElement("div");
   fields.className = "player-fields";
   fields.innerHTML = `
-    <label>Name <input data-player-field="name" value="${escapeHtml(player.name || "")}" /></label>
+    <label>Name <input data-player-field="name" value="${escapeHtml(getLocalizedValue(player.name))}" /></label>
     <label>Photo URL or path <input data-player-field="image" value="${escapeHtml(player.image || "")}" placeholder="assets/images/player-01.jpg" /></label>
     <label>Upload photo <input data-photo-upload type="file" accept="image/*" /></label>
-    <label>Squad <input data-player-field="squad" value="${escapeHtml(player.squad || "")}" /></label>
-    <label>Status <input data-player-field="status" value="${escapeHtml(player.status || "Confirme")}" /></label>
-    <label>Description <textarea data-player-field="description">${escapeHtml(player.description || player.role || player.tag || "")}</textarea></label>
+    <label>Squad <input data-player-field="squad" value="${escapeHtml(getLocalizedValue(player.squad))}" /></label>
+    <label>Status <input data-player-field="status" value="${escapeHtml(getLocalizedValue(player.status) || "Confirme")}" /></label>
+    <label>Description <textarea data-player-field="description">${escapeHtml(getLocalizedValue(player.description || player.role || player.tag || ""))}</textarea></label>
   `;
 
   const removeButton = document.createElement("button");
@@ -225,14 +272,14 @@ function playerTemplate(player, index) {
   removeButton.type = "button";
   removeButton.textContent = "Remove";
   removeButton.addEventListener("click", () => {
-    players.splice(index, 1);
-    renderPlayers();
+    collection.splice(index, 1);
+    renderCallback();
   });
 
   fields.addEventListener("input", (event) => {
     const input = event.target.closest("[data-player-field]");
     if (!input) return;
-    players[index][input.dataset.playerField] = input.value;
+    collection[index][input.dataset.playerField] = input.value;
     if (input.dataset.playerField === "image") preview.src = input.value || "assets/favicon.svg";
   });
 
@@ -246,8 +293,8 @@ function playerTemplate(player, index) {
       const dataUrl = String(reader.result || "");
       const [, meta = "", base64 = ""] = dataUrl.match(/^data:([^;]+);base64,(.+)$/) || [];
       const extension = file.name.split(".").pop()?.toLowerCase() || meta.split("/").pop() || "jpg";
-      players[index].image = dataUrl;
-      players[index].pendingImage = { base64, extension };
+      collection[index].image = dataUrl;
+      collection[index].pendingImage = { base64, extension };
       preview.src = dataUrl;
       const imageInput = fields.querySelector('[data-player-field="image"]');
       if (imageInput) imageInput.value = dataUrl;
@@ -259,17 +306,25 @@ function playerTemplate(player, index) {
   return row;
 }
 
-function renderPlayers() {
-  const editor = $("[data-players-editor]");
+function renderRoster(editorSelector, collection, emptyText, renderCallback) {
+  const editor = $(editorSelector);
   editor.innerHTML = "";
-  if (!players.length) {
+  if (!collection.length) {
     const empty = document.createElement("p");
     empty.className = "admin-muted";
-    empty.textContent = "No players yet. Add one to start.";
+    empty.textContent = emptyText;
     editor.appendChild(empty);
     return;
   }
-  players.forEach((player, index) => editor.appendChild(playerTemplate(player, index)));
+  collection.forEach((player, index) => editor.appendChild(playerTemplate(player, index, collection, renderCallback)));
+}
+
+function renderMembers() {
+  renderRoster("[data-members-editor]", members, "No members yet. Add one to start.", renderMembers);
+}
+
+function renderParticipants() {
+  renderRoster("[data-participants-editor]", participants, "No participants yet. Add one to start.", renderParticipants);
 }
 
 function fillForm() {
@@ -278,7 +333,25 @@ function fillForm() {
     if (input) input.value = value || "";
   });
   $("[name='formUrl']").value = formUrl || "";
-  renderPlayers();
+  $("[name='eventDate']").value = eventDate || "";
+  $("[name='eventTime']").value = eventTime || "";
+  $("[name='eventMode']").value = eventMode || "";
+  renderMembers();
+  renderParticipants();
+}
+
+function cleanRoster(collection, defaults) {
+  return collection.map((player) => ({
+    eventId,
+    name: player.name || defaults.name,
+    tag: player.description || player.tag || "Participant",
+    role: player.description || player.role || "Participant",
+    squad: player.squad || defaults.squad,
+    status: player.status || "Confirme",
+    image: player.image || "",
+    description: player.description || "",
+    pendingImage: player.pendingImage
+  }));
 }
 
 function readForm() {
@@ -290,23 +363,20 @@ function readForm() {
     instagram: $("[name='instagram']").value.trim()
   };
   formUrl = $("[name='formUrl']").value.trim();
-  players = players.map((player) => ({
-    eventId,
-    name: player.name || "Player",
-    tag: player.description || player.tag || "Participant",
-    role: player.description || player.role || "Participant",
-    squad: player.squad || "TBRK",
-    status: player.status || "Confirme",
-    image: player.image || "",
-    description: player.description || "",
-    pendingImage: player.pendingImage
-  }));
+  eventDate = $("[name='eventDate']").value.trim();
+  eventTime = $("[name='eventTime']").value.trim();
+  eventMode = $("[name='eventMode']").value.trim();
+  members = cleanRoster(members, { name: "Member", squad: "TBRK" });
+  participants = cleanRoster(participants, { name: "Participant", squad: "Squad to confirm" });
 }
 
-function updateEventsFormUrl(events, nextFormUrl) {
+function updateEvents(events) {
   const nextEvents = Array.isArray(events) && events.length ? structuredClone(events) : [{ id: eventId, active: true }];
-  const activeEvent = nextEvents.find((event) => event.active) || nextEvents[0];
-  activeEvent.formUrl = nextFormUrl;
+  const activeEvent = getActiveEvent(nextEvents);
+  activeEvent.formUrl = formUrl;
+  activeEvent.dateLabel = setLocalizedValue(activeEvent.dateLabel, eventDate);
+  activeEvent.timeLabel = setLocalizedValue(activeEvent.timeLabel, eventTime);
+  activeEvent.mode = setLocalizedValue(activeEvent.mode, eventMode);
   return nextEvents;
 }
 
@@ -315,31 +385,33 @@ async function loadFromGithub() {
   getGithubSettings();
   setMessage("Loading content from GitHub...");
 
-  const [socialFile, eventFile, playerFile] = await Promise.all([
+  const [socialFile, eventFile, memberFile, participantFile] = await Promise.all([
     getGithubFile("data/socials.json"),
     getGithubFile("data/events.json"),
+    getOptionalGithubFile("data/members.json"),
     getGithubFile("data/participants.json")
   ]);
 
   socials = JSON.parse(base64ToText(socialFile.content));
   eventsData = JSON.parse(base64ToText(eventFile.content));
-  players = JSON.parse(base64ToText(playerFile.content)).map((player) => ({
-    ...player,
-    description: player.description || player.role || player.tag || ""
-  }));
-  const activeEvent = eventsData.find((event) => event.active) || eventsData[0] || {};
+  participants = normalizeRoster(JSON.parse(base64ToText(participantFile.content)), fallbackPlayers);
+  members = memberFile ? normalizeRoster(JSON.parse(base64ToText(memberFile.content)), fallbackMembers) : normalizeRoster(participants, fallbackMembers);
+  const activeEvent = getActiveEvent();
   formUrl = activeEvent.formUrl || "";
+  eventDate = getLocalizedValue(activeEvent.dateLabel);
+  eventTime = getLocalizedValue(activeEvent.timeLabel);
+  eventMode = getLocalizedValue(activeEvent.mode);
   fillForm();
   setMessage("Loaded from GitHub.");
 }
 
-async function uploadPendingImages() {
-  for (let index = 0; index < players.length; index += 1) {
-    const player = players[index];
+async function uploadPendingImages(collection, folderName) {
+  for (let index = 0; index < collection.length; index += 1) {
+    const player = collection[index];
     if (!player.pendingImage?.base64) continue;
 
     const extension = player.pendingImage.extension.replace(/[^a-z0-9]/gi, "") || "jpg";
-    const filePath = `assets/images/players/${slugify(player.name)}-${Date.now()}-${index}.${extension}`;
+    const filePath = `assets/images/${folderName}/${slugify(player.name)}-${Date.now()}-${index}.${extension}`;
     await putGithubFile(filePath, player.pendingImage.base64, `Add player photo for ${player.name}`, undefined);
     player.image = filePath;
     delete player.pendingImage;
@@ -351,22 +423,27 @@ async function saveAll() {
   readForm();
   setMessage("Saving changes to GitHub...");
 
-  await uploadPendingImages();
-  const cleanPlayers = players.map(({ pendingImage, ...player }) => player);
-  const nextEvents = updateEventsFormUrl(eventsData, formUrl);
+  await uploadPendingImages(members, "members");
+  await uploadPendingImages(participants, "players");
+  const cleanMembers = members.map(({ pendingImage, ...player }) => player);
+  const cleanParticipants = participants.map(({ pendingImage, ...player }) => player);
+  const nextEvents = updateEvents(eventsData);
 
-  const [socialFile, eventFile, playerFile] = await Promise.all([
+  const [socialFile, eventFile, memberFile, participantFile] = await Promise.all([
     getGithubFile("data/socials.json"),
     getGithubFile("data/events.json"),
+    getOptionalGithubFile("data/members.json"),
     getGithubFile("data/participants.json")
   ]);
 
   await putGithubFile("data/socials.json", textToBase64(`${JSON.stringify(socials, null, 2)}\n`), "Update TBRK social links", socialFile.sha);
-  await putGithubFile("data/events.json", textToBase64(`${JSON.stringify(nextEvents, null, 2)}\n`), "Update TBRK registration form link", eventFile.sha);
-  await putGithubFile("data/participants.json", textToBase64(`${JSON.stringify(cleanPlayers, null, 2)}\n`), "Update TBRK players", playerFile.sha);
+  await putGithubFile("data/events.json", textToBase64(`${JSON.stringify(nextEvents, null, 2)}\n`), "Update TBRK event details", eventFile.sha);
+  await putGithubFile("data/members.json", textToBase64(`${JSON.stringify(cleanMembers, null, 2)}\n`), "Update Team Breakers members", memberFile?.sha);
+  await putGithubFile("data/participants.json", textToBase64(`${JSON.stringify(cleanParticipants, null, 2)}\n`), "Update TBRK participants", participantFile.sha);
 
   eventsData = nextEvents;
-  players = cleanPlayers;
+  members = cleanMembers;
+  participants = cleanParticipants;
   fillForm();
   setMessage("Saved to GitHub. GitHub Pages may take a minute to show the update.");
 }
@@ -375,8 +452,9 @@ function downloadBackup() {
   readForm();
   const backup = {
     socials,
-    events: updateEventsFormUrl(eventsData, formUrl),
-    players: players.map(({ pendingImage, ...player }) => player)
+    events: updateEvents(eventsData),
+    members: members.map(({ pendingImage, ...player }) => player),
+    participants: participants.map(({ pendingImage, ...player }) => player)
   };
   const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -389,19 +467,21 @@ function downloadBackup() {
 
 async function loadData() {
   restoreGithubSettings();
-  const [localSocials, localPlayers, localEvents] = await Promise.all([
+  const [localSocials, localMembers, localParticipants, localEvents] = await Promise.all([
     fetchJson("data/socials.json", fallbackSocials),
+    fetchJson("data/members.json", fallbackMembers),
     fetchJson("data/participants.json", fallbackPlayers),
     fetchJson("data/events.json", [])
   ]);
   socials = localSocials;
   eventsData = localEvents;
-  players = localPlayers.map((player) => ({
-    ...player,
-    description: player.description || player.role || player.tag || ""
-  }));
-  const activeEvent = eventsData.find((event) => event.active) || eventsData[0] || {};
+  members = normalizeRoster(localMembers, fallbackMembers);
+  participants = normalizeRoster(localParticipants, fallbackPlayers);
+  const activeEvent = getActiveEvent();
   formUrl = activeEvent.formUrl || "";
+  eventDate = getLocalizedValue(activeEvent.dateLabel);
+  eventTime = getLocalizedValue(activeEvent.timeLabel);
+  eventMode = getLocalizedValue(activeEvent.mode);
   fillForm();
 }
 
@@ -429,8 +509,22 @@ function initLogin() {
 }
 
 function initAdmin() {
-  $("[data-add-player]").addEventListener("click", () => {
-    players.push({
+  $("[data-add-member]").addEventListener("click", () => {
+    members.push({
+      eventId,
+      name: "",
+      tag: "",
+      role: "",
+      squad: "TBRK",
+      status: "Confirme",
+      image: "",
+      description: ""
+    });
+    renderMembers();
+  });
+
+  $("[data-add-participant]").addEventListener("click", () => {
+    participants.push({
       eventId,
       name: "",
       tag: "",
@@ -440,7 +534,7 @@ function initAdmin() {
       image: "",
       description: ""
     });
-    renderPlayers();
+    renderParticipants();
   });
 
   const handleAsyncAction = (action) => async (event) => {

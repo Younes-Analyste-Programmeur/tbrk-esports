@@ -1,0 +1,72 @@
+[
+  {
+    "eventId": "cod-tournament-100",
+    "name": "ACE ",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-01.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "YAMITCH",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-02.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "GAMIX",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-05.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "DADDY",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-06.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "SOUNDWAVE",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-07.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "X9AMAM",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-08.jpg",
+    "description": "Organizer"
+  },
+  {
+    "eventId": "cod-tournament-100",
+    "name": "WISHYWASHY667",
+    "tag": "Organizer",
+    "role": "Organizer",
+    "squad": "TBRK",
+    "status": "ConfirmÃ©",
+    "image": "assets/images/player-09.jpg",
+    "description": "Organizer"
+  }
+]

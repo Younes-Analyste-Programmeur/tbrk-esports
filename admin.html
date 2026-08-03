@@ -14,7 +14,7 @@
       <div>
         <p class="eyebrow"><span></span> TBRK Admin</p>
         <h1>Admin Access</h1>
-        <p class="admin-muted">Manage social links, the registration form link, and player cards by committing changes to GitHub. </p>
+        <p class="admin-muted">Manage social links, event details, Team Breakers members, and event participants by committing changes to GitHub. </p>
       </div>
 
       <form class="admin-card admin-form" action="#" data-login-form>
@@ -63,17 +63,34 @@
         </section>
 
         <section class="admin-card">
-          <h2>Registration Form</h2>
+          <h2>Event Details</h2>
+          <label>Event date <input name="eventDate" placeholder="Saturday 20/06/2026" /></label>
+          <label>Event hour <input name="eventTime" placeholder="8:00 PM EST" /></label>
+          <label>Format <input name="eventMode" placeholder="4v4 or 3v3" /></label>
           <label>Subscription form link <input name="formUrl" type="url" placeholder="https://forms.gle/..." /></label>
           <p class="admin-muted">Leave it empty to show the current "form coming soon" state.</p>
         </section>
 
         <section class="admin-card admin-card-wide">
           <div class="admin-section-head">
-            <h2>Players</h2>
-            <button class="btn btn-secondary" type="button" data-add-player>Add Player</button>
+            <div>
+              <h2>Team Breakers Members</h2>
+              <p class="admin-muted">Official Team Breakers roster shown in the Team section.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" data-add-member>Add Member</button>
           </div>
-          <div class="players-editor" data-players-editor></div>
+          <div class="players-editor" data-members-editor></div>
+        </section>
+
+        <section class="admin-card admin-card-wide">
+          <div class="admin-section-head">
+            <div>
+              <h2>Participants</h2>
+              <p class="admin-muted">Event signup list shown in the Participants section. Add Team Breakers members here too when they are playing in the event.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" data-add-participant>Add Participant</button>
+          </div>
+          <div class="players-editor" data-participants-editor></div>
         </section>
 
         <section class="admin-card admin-card-wide">
