@@ -18,9 +18,9 @@ const fallbackSocials = {
 };
 
 const fallbackPlayers = [
-  { eventId, name: "ACE ", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirme", image: "assets/images/player-01.jpg", description: "Organizer" },
-  { eventId, name: "YAMITCH", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirme", image: "assets/images/player-02.jpg", description: "Organizer" },
-  { eventId, name: "SHOWGUN", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirme", image: "assets/images/player-03.jpg", description: "Organizer" }
+  { eventId, name: "ACE ", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirmed", image: "assets/images/player-01.jpg", description: "Organizer" },
+  { eventId, name: "YAMITCH", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirmed", image: "assets/images/player-02.jpg", description: "Organizer" },
+  { eventId, name: "SHOWGUN", tag: "TBRK Core", role: "Organizer", squad: "TBRK", status: "Confirmed", image: "assets/images/player-03.jpg", description: "Organizer" }
 ];
 
 const fallbackMembers = fallbackPlayers;
@@ -263,7 +263,7 @@ function playerTemplate(player, index, collection, renderCallback) {
     <label>Photo URL or path <input data-player-field="image" value="${escapeHtml(player.image || "")}" placeholder="assets/images/player-01.jpg" /></label>
     <label>Upload photo <input data-photo-upload type="file" accept="image/*" /></label>
     <label>Squad <input data-player-field="squad" value="${escapeHtml(getLocalizedValue(player.squad))}" /></label>
-    <label>Status <input data-player-field="status" value="${escapeHtml(getLocalizedValue(player.status) || "Confirme")}" /></label>
+    <label>Status <input data-player-field="status" value="${escapeHtml(getLocalizedValue(player.status) || "Confirmed")}" /></label>
     <label>Description <textarea data-player-field="description">${escapeHtml(getLocalizedValue(player.description || player.role || player.tag || ""))}</textarea></label>
   `;
 
@@ -321,10 +321,36 @@ function renderRoster(editorSelector, collection, emptyText, renderCallback) {
 
 function renderMembers() {
   renderRoster("[data-members-editor]", members, "No members yet. Add one to start.", renderMembers);
+  setRosterCount("[data-member-count-admin]", members.length);
 }
 
 function renderParticipants() {
   renderRoster("[data-participants-editor]", participants, "No participants yet. Add one to start.", renderParticipants);
+  setRosterCount("[data-participant-count-admin]", participants.length);
+}
+
+function setRosterCount(selector, total) {
+  const count = $(selector);
+  if (count) count.textContent = String(total);
+}
+
+function rosterKey(player) {
+  return `${getLocalizedValue(player.name).trim().toLowerCase()}|${getLocalizedValue(player.squad).trim().toLowerCase()}`;
+}
+
+function copyMissingMembersToParticipants() {
+  const participantKeys = new Set(participants.map(rosterKey));
+  members.forEach((member) => {
+    const key = rosterKey(member);
+    if (!key.trim() || participantKeys.has(key)) return;
+    participants.push({
+      ...member,
+      eventId,
+      status: member.status || "Confirmed"
+    });
+    participantKeys.add(key);
+  });
+  renderParticipants();
 }
 
 function fillForm() {
@@ -347,7 +373,7 @@ function cleanRoster(collection, defaults) {
     tag: player.description || player.tag || "Participant",
     role: player.description || player.role || "Participant",
     squad: player.squad || defaults.squad,
-    status: player.status || "Confirme",
+    status: player.status || "Confirmed",
     image: player.image || "",
     description: player.description || "",
     pendingImage: player.pendingImage
@@ -516,7 +542,7 @@ function initAdmin() {
       tag: "",
       role: "",
       squad: "TBRK",
-      status: "Confirme",
+      status: "Confirmed",
       image: "",
       description: ""
     });
@@ -530,12 +556,14 @@ function initAdmin() {
       tag: "",
       role: "",
       squad: "",
-      status: "Confirme",
+      status: "Confirmed",
       image: "",
       description: ""
     });
     renderParticipants();
   });
+
+  $("[data-sync-members]").addEventListener("click", copyMissingMembersToParticipants);
 
   const handleAsyncAction = (action) => async (event) => {
     event.preventDefault();

@@ -385,6 +385,23 @@ h1 em {
   font-size: 0.88rem;
 }
 
+.form-embed {
+  overflow: hidden;
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow);
+}
+
+.form-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: min(854px, 86vh);
+  border: 0;
+  background: #fff;
+}
+
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -821,6 +838,11 @@ h1 em {
 
 .count-card strong {
   font-size: 3rem;
+}
+
+.team-count-card {
+  width: fit-content;
+  margin: 24px auto 0;
 }
 
 .participants-list {

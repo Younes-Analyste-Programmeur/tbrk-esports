@@ -18,32 +18,32 @@
       "ar": "جهّز فريقك لبطولة Call of Duty من TBRK Esports بنظام المباريات الخاصة. احترام، لعب نظيف، وعدم التسامح نهائياً مع الغش."
     },
     "dateLabel": {
-      "fr": "Samedi 20/06/2026",
-      "en": "Saturday 20/06/2026",
-      "ar": "السبت 20/06/2026"
+      "fr": "Samedi 08/08/2026",
+      "en": "Saturday 08/08/2026",
+      "ar": "Saturday 08/08/2026"
     },
     "timeLabel": {
-      "fr": "Heure à confirmer",
-      "en": "Time to be confirmed",
-      "ar": "سيتم تأكيد الوقت"
+      "fr": "23:00 heure du Maroc",
+      "en": "23:00 Moroccan time",
+      "ar": "23:00 Moroccan time"
     },
     "mode": {
-      "fr": "Matchs privés COD",
-      "en": "COD private matches",
-      "ar": "مباريات COD خاصة"
+      "fr": "3v3",
+      "en": "3v3",
+      "ar": "3v3"
     },
-    "cashPrize": "$100",
+    "cashPrize": "BE THE BEST",
     "statusLabel": {
-      "fr": "Inscriptions à venir",
-      "en": "Registration coming soon",
-      "ar": "التسجيل قريباً"
+      "fr": "Date confirmee",
+      "en": "Date confirmed",
+      "ar": "Date confirmed"
     },
     "registrationStatus": {
-      "fr": "À venir",
-      "en": "Coming soon",
-      "ar": "قريباً"
+      "fr": "Compte a rebours",
+      "en": "Countdown",
+      "ar": "Countdown"
     },
-    "formUrl": "",
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSf1eg2Zl-K3qJorzUhEaVsmOD-RLUkhR1WDR3X3w_1dHGWN-w/viewform",
     "sheetCsvUrl": "",
     "rules": [
       {
@@ -86,6 +86,7 @@
       "fr": "Tout joueur pris à tricher, exploiter un bug, utiliser un hack ou un logiciel non autorisé recevra un bannissement permanent de tous les événements TBRK Esports.",
       "en": "Any player caught cheating, exploiting bugs, using hacks or unauthorized software will receive a permanent ban from all TBRK Esports events.",
       "ar": "أي لاعب يتم ضبطه وهو يغش أو يستغل الثغرات أو يستخدم هاكات أو برامج غير مصرح بها سيحصل على حظر دائم من جميع فعاليات TBRK Esports."
-    }
+    },
+    "startsAt": "2026-08-08T23:00:00+01:00"
   }
 ]

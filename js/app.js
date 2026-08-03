@@ -41,7 +41,7 @@ const translations = {
     "hero.confirmedPlayers": "joueurs confirmés",
     "hero.privateMatches": "Matchs privés",
     "metrics.cashPrize": "Cash prize",
-    "metrics.format": "4v4",
+    "metrics.format": "3v3",
     "metrics.squads": "Squads",
     "metrics.registrations": "Inscriptions",
     "poster.activeEvent": "Event actif",
@@ -58,6 +58,10 @@ const translations = {
     "event.prize": "Prix",
     "event.fillForm": "Remplir le formulaire",
     "event.viewRules": "Voir les règles",
+    "countdown.days": "{count} jours",
+    "countdown.hours": "{hours}h {minutes}m",
+    "countdown.live": "En direct",
+    "countdown.finished": "Termine",
     "rules.eyebrow": "Règlement officiel",
     "rules.title": "Règles du tournoi",
     "rules.policyTitle": "Fair Play Policy",
@@ -70,6 +74,7 @@ const translations = {
     "team.eyebrow": "Roster",
     "team.title": "Les visages de Team Breakers",
     "team.text": "Un roster noir et or pour découvrir les joueurs, admins, streamers et organisateurs qui font vivre Team Breakers.",
+    "team.membersCount": "membres",
     "participants.eyebrow": "Event en cours",
     "participants.title": "Participants inscrits",
     "participants.text": "Quand un événement est actif, cette section affiche les joueurs confirmés et les squads déjà prêts pour le lobby.",
@@ -86,11 +91,11 @@ const translations = {
     "cta.title": "Inscris ton squad au prochain tournoi TBRK.",
     "cta.text": "Remplis le formulaire officiel pour réserver ta place. L'équipe TBRK validera ensuite les joueurs confirmés pour l'événement.",
     "cta.openForm": "Ouvrir le formulaire",
-    "form.coming": "Formulaire à venir",
-    "form.registrationComing": "Inscription à venir",
+    "form.coming": "Formulaire d'inscription",
+    "form.registrationComing": "Inscription",
     "form.note.open": "Le formulaire s’ouvrira dans un nouvel onglet.",
     "form.note.closed": "Le formulaire sera ajouté ici dès l’ouverture des inscriptions.",
-    "form.titleClosed": "Le formulaire d'inscription sera ajouté bientôt.",
+    "form.titleClosed": "Le formulaire d'inscription sera ajouté ici.",
     "social.eyebrow": "Communauté",
     "social.title": "Connecte-toi avec TBRK.",
     "social.text": "Rejoins nos réseaux pour recevoir les annonces d'événements, les horaires des lobbys, les clips, les résultats et les prochaines ouvertures d'inscription.",
@@ -152,7 +157,7 @@ const translations = {
     "hero.confirmedPlayers": "confirmed players",
     "hero.privateMatches": "Private matches",
     "metrics.cashPrize": "Cash prize",
-    "metrics.format": "4v4",
+    "metrics.format": "3v3",
     "metrics.squads": "Squads",
     "metrics.registrations": "Registration",
     "poster.activeEvent": "Active event",
@@ -169,6 +174,10 @@ const translations = {
     "event.prize": "Prize",
     "event.fillForm": "Fill the form",
     "event.viewRules": "View rules",
+    "countdown.days": "{count} days",
+    "countdown.hours": "{hours}h {minutes}m",
+    "countdown.live": "Live now",
+    "countdown.finished": "Finished",
     "rules.eyebrow": "Official rules",
     "rules.title": "Tournament rules",
     "rules.policyTitle": "Fair Play Policy",
@@ -181,6 +190,7 @@ const translations = {
     "team.eyebrow": "Roster",
     "team.title": "The faces of Team Breakers",
     "team.text": "A black-and-gold roster to discover the players, admins, streamers and organizers who keep Team Breakers alive.",
+    "team.membersCount": "members",
     "participants.eyebrow": "Current event",
     "participants.title": "Registered participants",
     "participants.text": "When an event is active, this section displays confirmed players and squads already ready for the lobby.",
@@ -197,11 +207,11 @@ const translations = {
     "cta.title": "Register your squad for the next TBRK tournament.",
     "cta.text": "Complete the official form to reserve your spot. The TBRK team will then validate confirmed players for the event.",
     "cta.openForm": "Open the form",
-    "form.coming": "Form coming soon",
-    "form.registrationComing": "Registration coming soon",
+    "form.coming": "Registration form",
+    "form.registrationComing": "Registration",
     "form.note.open": "The form will open in a new tab.",
     "form.note.closed": "The form will be added here as soon as registration opens.",
-    "form.titleClosed": "The registration form will be added soon.",
+    "form.titleClosed": "The registration form will be added here.",
     "social.eyebrow": "Community",
     "social.title": "Connect with TBRK.",
     "social.text": "Join our networks to receive event announcements, lobby schedules, clips, results and upcoming registration openings.",
@@ -263,7 +273,7 @@ const translations = {
     "hero.confirmedPlayers": "لاعبين مؤكدين",
     "hero.privateMatches": "مباريات خاصة",
     "metrics.cashPrize": "الجائزة النقدية",
-    "metrics.format": "4 ضد 4",
+    "metrics.format": "3v3",
     "metrics.squads": "الفرق",
     "metrics.registrations": "التسجيل",
     "poster.activeEvent": "فعالية نشطة",
@@ -280,6 +290,10 @@ const translations = {
     "event.prize": "الجائزة",
     "event.fillForm": "تعبئة النموذج",
     "event.viewRules": "عرض القواعد",
+    "countdown.days": "{count} days",
+    "countdown.hours": "{hours}h {minutes}m",
+    "countdown.live": "Live now",
+    "countdown.finished": "Finished",
     "rules.eyebrow": "القواعد الرسمية",
     "rules.title": "قواعد البطولة",
     "rules.policyTitle": "سياسة اللعب النظيف",
@@ -292,6 +306,7 @@ const translations = {
     "team.eyebrow": "التشكيلة",
     "team.title": "وجوه Team Breakers",
     "team.text": "تشكيلة باللونين الأسود والذهبي للتعرف على اللاعبين والمشرفين وصنّاع المحتوى والمنظمين الذين يجعلون Team Breakers نشطة.",
+    "team.membersCount": "members",
     "participants.eyebrow": "الفعالية الحالية",
     "participants.title": "المشاركون المسجلون",
     "participants.text": "عندما تكون هناك فعالية نشطة، يعرض هذا القسم اللاعبين المؤكدين والفرق الجاهزة للّوبي.",
@@ -354,13 +369,14 @@ const fallbackEvents = [
       en: "Get your squad ready for a TBRK Esports Call of Duty private-match tournament. Respect, fair play and zero tolerance for cheating.",
       ar: "جهّز فريقك لبطولة Call of Duty من TBRK Esports بنظام المباريات الخاصة. احترام، لعب نظيف، وعدم التسامح نهائياً مع الغش."
     },
-    dateLabel: { fr: "Samedi 20/06/2026", en: "Saturday 20/06/2026", ar: "السبت 20/06/2026" },
-    timeLabel: { fr: "Heure à confirmer", en: "Time to be confirmed", ar: "سيتم تأكيد الوقت" },
-    mode: { fr: "Matchs privés COD", en: "COD private matches", ar: "مباريات COD خاصة" },
-    cashPrize: "$100",
-    statusLabel: { fr: "Inscriptions à venir", en: "Registration coming soon", ar: "التسجيل قريباً" },
-    registrationStatus: { fr: "À venir", en: "Coming soon", ar: "قريباً" },
-    formUrl: "",
+    dateLabel: { fr: "Samedi 08/08/2026", en: "Saturday 08/08/2026", ar: "Saturday 08/08/2026" },
+    timeLabel: { fr: "23:00 heure du Maroc", en: "23:00 Moroccan time", ar: "23:00 Moroccan time" },
+    mode: { fr: "3v3", en: "3v3", ar: "3v3" },
+    startsAt: "2026-08-08T23:00:00+01:00",
+    cashPrize: "BE THE BEST",
+    statusLabel: { fr: "Date confirmee", en: "Date confirmed", ar: "Date confirmed" },
+    registrationStatus: { fr: "Compte a rebours", en: "Countdown", ar: "Countdown" },
+    formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf1eg2Zl-K3qJorzUhEaVsmOD-RLUkhR1WDR3X3w_1dHGWN-w/viewform",
     sheetCsvUrl: "",
     rules: [
       { fr: "Respect de tous les joueurs, admins et membres du staff.", en: "Respect all players, admins and staff members.", ar: "احترام جميع اللاعبين والمشرفين وأعضاء الطاقم." },
@@ -409,6 +425,7 @@ let currentMembers = [];
 let currentParticipants = [];
 let currentSocials = fallbackSocials;
 let revealObserver = null;
+let countdownTimer = null;
 
 function validLanguage(lang) {
   return Object.prototype.hasOwnProperty.call(languageConfig, lang) ? lang : defaultLanguage;
@@ -688,6 +705,8 @@ function setSocialLinks(socialsData) {
 function setFormLinks(url) {
   const cleanUrl = normalizeFormUrl(url);
   const hasRealUrl = !isPlaceholderUrl(cleanUrl);
+  const iframe = $("[data-form-iframe]");
+  const embed = $("[data-form-embed]");
 
   $$('[data-form-link]').forEach((link) => {
     const activeTextKey = link.dataset.i18n;
@@ -716,6 +735,14 @@ function setFormLinks(url) {
   if (note) {
     note.textContent = hasRealUrl ? t("form.note.open") : t("form.note.closed");
   }
+
+  if (iframe && embed) {
+    embed.hidden = !hasRealUrl;
+    if (hasRealUrl) {
+      const separator = cleanUrl.includes("?") ? "&" : "?";
+      iframe.src = `${cleanUrl}${separator}embedded=true`;
+    }
+  }
 }
 
 function resolveEventField(event, fieldName) {
@@ -735,12 +762,43 @@ function getLocalizedEvent(event) {
     dateLabel: resolveEventField(event, "dateLabel"),
     timeLabel: resolveEventField(event, "timeLabel"),
     mode: resolveEventField(event, "mode"),
-    cashPrize: localize(event.cashPrize) || "$100",
+    cashPrize: localize(event.cashPrize) || "BE THE BEST",
     statusLabel: resolveEventField(event, "statusLabel"),
     registrationStatus: resolveEventField(event, "registrationStatus"),
     fairPlayPolicy: resolveEventField(event, "fairPlayPolicy"),
     rules: Array.isArray(rawRules) ? rawRules.map((rule) => localize(rule)) : []
   };
+}
+
+function countdownText(startsAt) {
+  if (!startsAt) return "";
+  const target = new Date(startsAt);
+  if (Number.isNaN(target.getTime())) return "";
+
+  const diff = target.getTime() - Date.now();
+  if (diff <= -4 * 60 * 60 * 1000) return t("countdown.finished");
+  if (diff <= 0) return t("countdown.live");
+
+  const totalMinutes = Math.ceil(diff / 60000);
+  const days = Math.floor(totalMinutes / 1440);
+  if (days >= 1) return t("countdown.days", { count: days });
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return t("countdown.hours", { hours, minutes: String(minutes).padStart(2, "0") });
+}
+
+function updateCountdown(event) {
+  const text = countdownText(event?.startsAt);
+  if (!text) return;
+  setText("[data-event-status]", text);
+}
+
+function startCountdown(event) {
+  if (countdownTimer) clearInterval(countdownTimer);
+  updateCountdown(event);
+  if (!event?.startsAt) return;
+  countdownTimer = setInterval(() => updateCountdown(event), 60000);
 }
 
 function renderEvent(event) {
@@ -759,6 +817,7 @@ function renderEvent(event) {
   setText("[data-event-status]", localizedEvent.registrationStatus || localizedEvent.statusLabel);
   setText("[data-event-prize]", localizedEvent.cashPrize);
   setText("[data-event-prize-card]", localizedEvent.cashPrize);
+  startCountdown(event);
   setFormLinks(event.formUrl);
   setText("[data-fair-play-policy]", localizedEvent.fairPlayPolicy);
 
@@ -814,6 +873,7 @@ function renderTeam(players) {
   const grid = $("[data-team-grid]");
   if (!grid) return;
   grid.innerHTML = "";
+  setText("[data-member-count]", players.length);
 
   players.slice(0, 8).map(localizePlayer).forEach((player) => {
     const card = document.createElement("article");
