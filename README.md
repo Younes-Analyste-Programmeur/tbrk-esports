@@ -34,16 +34,7 @@ L'admin peut modifier le site publie sur GitHub Pages en faisant des commits dan
 
 Ouvre :
 
-```text
-https://ton-site.github.io/ton-repo/admin.html
-```
 
-Login de depart :
-
-```text
-Username: admin
-Password: TBRK2026!
-```
 
 Ensuite, remplis les champs GitHub :
 
