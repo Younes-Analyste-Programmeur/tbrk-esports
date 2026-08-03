@@ -68,15 +68,5 @@
     "status": "Confirmed",
     "image": "assets/images/player-09.jpg",
     "description": "Organizer"
-  },
-  {
-    "eventId": "cod-tournament-100",
-    "name": "test",
-    "tag": "Participant",
-    "role": "Participant",
-    "squad": "test",
-    "status": "Confirmed",
-    "image": "assets/images/unknown.jpg",
-    "description": ""
   }
 ]
